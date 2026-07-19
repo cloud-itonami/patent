@@ -1,0 +1,30 @@
+{
+  "$comment": "LangGraph Server config — patent.etzhayyim.com. Graphs: blob_convert (every 5 min), ingest_uspto_weekly (weekly).",
+  "dependencies": ["./lg_patent", "../../../40-engine/kotoba/crates/kotoba-kotodama/py"],
+  "graphs": {
+    "health":               "./lg_patent/graphs/health.py:GRAPH",
+    "blob_convert":         "./lg_patent/graphs/blob_convert.py:GRAPH",
+    "ingest_uspto_weekly":  "./lg_patent/graphs/ingest_uspto_weekly.py:GRAPH"
+  },
+  "env": ".env",
+  "python_version": "3.11",
+  "checkpointer": {
+    "type": "postgres",
+    "$comment": "RW PG :4566 direct via _RwAsyncPostgresSaver subclass.",
+    "conn_str_env": "RW_URL"
+  },
+  "crons": [
+    {
+      "graph": "blob_convert",
+      "schedule": "*/5 * * * *",
+      "input": { "limit": 25 },
+      "$comment": "Every 5 min: convert pending PDF blobs to webp + OCR (replaces BPMN patent_blob_convert)"
+    },
+    {
+      "graph": "ingest_uspto_weekly",
+      "schedule": "0 2 * * 0",
+      "input": {},
+      "$comment": "Weekly (Sun 02:00 UTC): ingest USPTO PatentsView + EPO citations (replaces BPMN patent_ingest_uspto_weekly)"
+    }
+  ]
+}

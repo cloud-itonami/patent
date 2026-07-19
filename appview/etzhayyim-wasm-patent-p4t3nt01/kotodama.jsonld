@@ -1,0 +1,103 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:patent.etzhayyim.com",
+  "convoSystemPrompt": "You are Patent Registry agent. Global patent information platform integrating JPO (J-PlatPat), USPTO (PatentsView), EPO (OPS/INPADOC), and WIPO (PATENTSCOPE). Data model: patent (application/publication/grant), applicant, inventor, ipcClass, citation, familyMember, coverageReport. Primary key = {jurisdiction}-{appNumber}. Respond helpfully in the user's language.",
+  "duties": ["勤労の義務"],
+  "entities": [
+    {
+      "category": "regulatory",
+      "did": "did:web:patent.etzhayyim.com:source:jpo",
+      "name": "JPO J-PlatPat",
+      "sourceId": "src-jpo",
+      "url": "https://www.j-platpat.inpit.go.jp/"
+    },
+    {
+      "category": "regulatory",
+      "did": "did:web:patent.etzhayyim.com:source:uspto",
+      "name": "USPTO PatentsView",
+      "sourceId": "src-uspto",
+      "url": "https://patentsview.org/"
+    },
+    {
+      "category": "regulatory",
+      "did": "did:web:patent.etzhayyim.com:source:epo",
+      "name": "EPO Open Patent Services",
+      "sourceId": "src-epo",
+      "url": "https://ops.epo.org/"
+    },
+    {
+      "category": "international",
+      "did": "did:web:patent.etzhayyim.com:source:wipo",
+      "name": "WIPO PATENTSCOPE",
+      "sourceId": "src-wipo",
+      "url": "https://patentscope.wipo.int/"
+    }
+  ],
+  "governance": {
+    "classification": "internal",
+    "complianceFrameworks": ["WIPO-ST.96", "INPADOC"],
+    "raci": "responsible"
+  },
+  "kpi": ["credits の獲得"],
+  "name": "Patent Registry",
+  "nanoid": "p4t3nt01",
+  "performerType": "service",
+  "profile": {
+    "avatar": "PAT",
+    "capabilities": ["patent-search", "patent-lookup", "citation-network", "patent-family"],
+    "category": "intellectual-property",
+    "description": "Global patent registry — JPO / USPTO / EPO / WIPO integration, IPC/CPC classification, INPADOC family, citation graph, cross-linked to LEI / ISIC / natural-person.",
+    "displayName": "Patent Registry"
+  },
+  "runtimeType": "worker",
+  "space": {
+    "name": "Patent Registry",
+    "description": "特許情報 coverage hub (JPO/USPTO/EPO/WIPO)",
+    "joinRule": "public",
+    "historyVisibility": "world-readable",
+    "convos": [
+      {
+        "name": "patent-feed",
+        "kind": "public",
+        "description": "新規出願・登録・引用 feed",
+        "default": true
+      }
+    ]
+  },
+  "triggers": {
+    "http": {
+      "listen": "0.0.0.0:8080",
+      "routes": [
+        "/api/...",
+        "/health",
+        "/.well-known/did.json",
+        "/.well-known/atproto-did",
+        "/..."
+      ],
+      "spa": true,
+      "staticDir": "/wasm/svelte/dist"
+    },
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.feed.repost",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.patent.patent",
+        "com.etzhayyim.apps.patent.applicant",
+        "com.etzhayyim.apps.patent.inventor",
+        "com.etzhayyim.apps.patent.ipcClass",
+        "com.etzhayyim.apps.patent.citation",
+        "com.etzhayyim.apps.patent.familyMember",
+        "com.etzhayyim.apps.patent.coverageReport"
+      ]
+    }
+  },
+  "ui": {
+    "accent": "#7c3aed",
+    "icon": "PAT"
+  },
+  "uiType": "yoro",
+  "executionTier": "T1",
+  "version": "1.0.0"
+}

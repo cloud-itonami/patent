@@ -1,0 +1,23 @@
+{;; Scoped babashka project for the lg-patent clj port (ADR-2606280030:
+ ;; langgraph-python → langgraph-clj). This is the APP-LOCAL bb.edn — it does
+ ;; NOT touch the repo-root bb.edn. Source root is `clj/` (the .cljc twins of
+ ;; `lg_patent/**.py`, which COEXIST with the deployed python until each twin is
+ ;; verified + a human cuts the runtime over).
+ ;;
+ ;; The host capabilities the port needs — babashka.http-client (httpx →),
+ ;; cheshire.core (JSON), org.httpkit.server (FastAPI/uvicorn →) — are all
+ ;; bundled in babashka, so no extra deps for them. langgraph-clj / langchain-clj
+ ;; git shas are pinned to match the repo-root bb.edn + the wave-1 twins.
+ :paths ["clj"]
+ :deps {com-junkawasaki/langchain-clj
+        {:git/url "https://github.com/com-junkawasaki/langchain-clj"
+         :git/sha "2b03859c3ee722b64f3eddd0b615a54019b17c81"}
+        com-junkawasaki/langgraph-clj
+        {:git/url "https://github.com/com-junkawasaki/langgraph-clj"
+         :git/sha "c7daa07d4e50f55d7e2a02e4b89dbeb2b200961d"}}
+ :tasks
+ {test   {:doc  "Run the lg-patent clj test suites (clojure.test under bb)."
+          :task (load-file "run_tests.clj")}
+  server {:doc  "Boot the lg-patent httpkit server (port of server.py FastAPI)."
+          :requires ([lg-patent.server :as server])
+          :task (apply server/-main *command-line-args*)}}}
