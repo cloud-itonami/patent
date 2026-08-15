@@ -1,0 +1,8 @@
+# Added 2026-08-15 while walking docs/operator-quickstart.md: 経路 C は
+# kotoba/ で `npm install` を実行させるが、24543ae 時点でそれは `git status` に
+# 20,733 個の未追跡ファイル（240 MB）を残し、以降どの手順の差分も読めなくなる。
+node_modules/
+package-lock.json
+
+# vitest / vite scratch
+.vite-temp/
