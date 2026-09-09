@@ -13,7 +13,7 @@
   Host I/O (HTTP + JSON) is injected/bundled: `babashka.http-client` +
   `cheshire.core` are bb built-ins, required only under :clj so the ns stays
   cljc-portable (the pure `build-payload` fn loads everywhere)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             #?(:clj [cheshire.core :as json])))
 
 (def default-config {:url "http://bpmn-dispatcher.mitama-udf.svc.cluster.local:8080"

@@ -7,7 +7,7 @@
 ;;
 ;;   bb run_tests.clj          ; from 60-apps/etzhayyim-project-patent/lg/
 ;;   bb test                   ; via the scoped bb.edn task
-(require '[babashka.http-client :as http]
+(require '[kotoba.lang.text] '[babashka.http-client :as http]
          '[cheshire.core :as json]
          '[clojure.test :as t]
          '[org.httpkit.server :as httpkit]
@@ -31,7 +31,7 @@
                             :disabled? (= "1" (env "LG_AUDIT_DISABLED" "0"))}
             audit/*http-post* http/post
             cron/*config* {:enabled? (contains? #{"1" "true" "yes"}
-                                                 (clojure.string/lower-case (env "LG_CRON_ENABLED" "true")))
+                                                 (kotoba.lang.text/lower (env "LG_CRON_ENABLED" "true")))
                            :langgraph-json (env "LANGGRAPH_JSON" "/app/langgraph.json")}
             ingest/*config* {:patentsview-url (env "PATENTSVIEW_URL" (:patentsview-url ingest/*config*))}
             ingest/*http-get* patentsview-get

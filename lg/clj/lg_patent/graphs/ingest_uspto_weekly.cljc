@@ -21,7 +21,7 @@
   DEVIATIONS (noted in PR): kotodama source absent → topology reconstructed +
   injectable seams; httpx → babashka.http-client; JSON → cheshire; RisingWave →
   kotoba-Datom-log store seam; no per-node RetryPolicy."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [langgraph.graph :as g]
             #?(:clj [cheshire.core :as json])))
 
