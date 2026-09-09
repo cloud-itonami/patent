@@ -14,7 +14,7 @@
   whose `graph` is a known graph), or nil when disabled / no specs. The spec
   filtering + fire-input/thread-id logic are faithful to `_load_cron_specs` /
   `_make_fire` and covered by tests."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             #?(:clj [cheshire.core :as json])))
 
 (def ^:dynamic *config* {:enabled? true :langgraph-json "/app/langgraph.json"})

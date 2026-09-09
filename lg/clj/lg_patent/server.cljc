@@ -23,7 +23,7 @@
      so /threads/{tid}/state returns an empty snapshot until one is wired.
    - /runs/stream computes events then flushes them as SSE (not incrementally
      streamed). thread_id is generated as `run-/stream-/xrpc-<epoch>` like python."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [langgraph.graph :as g]
             [lg-patent.graphs.health :as health]
             [lg-patent.graphs.blob-convert :as blob-convert]

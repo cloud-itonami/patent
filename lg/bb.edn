@@ -9,7 +9,12 @@
  ;; bundled in babashka, so no extra deps for them. langgraph-clj / langchain-clj
  ;; git shas are pinned to match the repo-root bb.edn + the wave-1 twins.
  :paths ["clj"]
- :deps {com-junkawasaki/langchain-clj
+ :deps {
+        ;; kotoba.lang.text, not clojure.string. Pinned as an explicit floor:
+        ;; tools.deps takes the NEWEST sha it is shown, so without a floor here
+        ;; this repo silently rides whatever a sibling happens to name.
+        io.github.kotoba-lang/text {:git/sha "73bdb13ae7a3d004b44bca08be03a3191157a38f"}
+       com-junkawasaki/langchain-clj
         {:git/url "https://github.com/com-junkawasaki/langchain-clj"
          :git/sha "2b03859c3ee722b64f3eddd0b615a54019b17c81"}
         com-junkawasaki/langgraph-clj
