@@ -1,11 +1,11 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; lg-patent — bb-native test runner (clojure.test; no shell). ADR-2606280030.
 ;;
 ;; Per the repo-wide rule (root CLAUDE.md §"Operational code = clj/bb"): new
 ;; first-party tooling is clj/bb, NOT shell. This is the .clj runner the repo
 ;; rule mandates for ported actors/apps (replaces run_tests.sh).
 ;;
-;;   bb run_tests.clj          ; from 60-apps/etzhayyim-project-patent/lg/
+;;   kbb run_tests.cljk          ; from 60-apps/etzhayyim-project-patent/lg/
 ;;   bb test                   ; via the scoped bb.edn task
 (require '[kotoba.lang.text] '[babashka.http-client :as http]
          '[cheshire.core :as json]

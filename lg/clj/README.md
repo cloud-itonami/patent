@@ -19,8 +19,8 @@ until a human cuts the runtime over. Nothing here removes or edits the Python.
 ## Run
 
 ```bash
-bb test              # clojure.test suite (run_tests.clj; NOT .sh — repo rule)
-bb server 8000       # boot the httpkit server (port parity w/ uvicorn :8000)
+kbb -M:test              # clojure.test suite (run_tests.clj; NOT .sh — repo rule)
+kbb -M:server 8000       # boot the httpkit server (port parity w/ uvicorn :8000)
 ```
 
 ## Faithfulness + deviations (per ADR-2606280030)

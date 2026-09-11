@@ -42,7 +42,7 @@ worker は `filed_at + 20 年` を**レビュー候補を出すためだけの�
 | 木 | 中身 | 状態 |
 |---|---|---|
 | `worker/python/` | 期限切れ医薬品特許 → 製造候補の Zeebe worker、1,066 行 | **動く**（stdlib のみ。`psycopg` は任意で、無ければ dry-run 経路に落ちる） |
-| `lg/clj/` | Python LangGraph サーバの cljc twin、854 行 + 3 suite | **動く**（`bb test` で 38 tests / 78 assertions） |
+| `lg/clj/` | Python LangGraph サーバの cljc twin、854 行 + 3 suite | **動く**（`kbb -M:test` で 38 tests / 78 assertions） |
 | `kotoba/` | TS package `@etzhayyim/patent-kotoba`。src 592 行 + test 69 行、vitest | **動く**（要 SSH 権限と `npm install`。手順は quickstart） |
 | `lg/lg_patent/` | 配備されている Python LangGraph サーバ、245 行 | **ここでは動かない**。`langgraph.json` の依存パスが移行前の monorepo を指す |
 | `appview/etzhayyim-wasm-patent-p4t3nt01/` | `kotodama.jsonld` **1 ファイルだけ** | 宣言のみ。`staticDir: /wasm/svelte/dist` と HTTP route を宣言するが、svelte も wasm もこの repo に無い |
