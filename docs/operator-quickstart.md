@@ -67,7 +67,7 @@ python3 worker/python/patent_expiry_worker.py validate-draft \
 
 ```bash
 cd lg
-bb test
+kbb -M:test
 ```
 
 **期待する出力**: `Ran 38 tests containing 78 assertions.` / `0 failures, 0 errors.` /
@@ -173,7 +173,7 @@ PDS もネットワークも要らない。
 cd lg
 cp clj/lg_patent/graphs/health.cljc /tmp/health.cljc.orig
 perl -0pi -e 's/\{:ok true :ts \(now-ms\)\}/{:ok false :ts (now-ms)}/' clj/lg_patent/graphs/health.cljc
-bb test
+kbb -M:test
 ```
 
 **期待する出力**: `Ran 38 tests containing 78 assertions.` / **`3 failures, 0 errors.`** /
@@ -185,7 +185,7 @@ graph 単体と HTTP 面の両方から見ているため。
 
 ```bash
 cp /tmp/health.cljc.orig clj/lg_patent/graphs/health.cljc
-bb test   # 0 failures に戻ることを確認する
+kbb -M:test   # 0 failures に戻ることを確認する
 ```
 
 ### 経路 C で
