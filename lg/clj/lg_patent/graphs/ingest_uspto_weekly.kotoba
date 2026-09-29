@@ -5,7 +5,7 @@
   in the python re-exported `kotodama.langgraph_graphs.patent_ingest_uspto_weekly`.
   That kotodama module is NOT vendored into this checkout; this port reconstructs
   the pipeline TOPOLOGY + contract from langgraph.json (cron `0 2 * * 0`, empty
-  input) + the actor CLAUDE.md (USPTO PatentsView JSON / EPO OPS citations →
+  input) + the actor AGENTS.md (USPTO PatentsView JSON / EPO OPS citations →
   `vertex_patent` + `edge_patent_cites`), with the side-effecting boundaries
   INJECTABLE per the actor-swap pattern:
 

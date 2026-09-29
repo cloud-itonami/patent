@@ -39,7 +39,7 @@ kbb -M:server 8000       # boot the httpkit server (port parity w/ uvicorn :8000
 - **kotodama graphs not in this checkout.** `blob_convert` / `ingest_uspto_weekly`
   re-exported `kotodama.langgraph_graphs.patent_*` in the python; that module is
   not vendored here, so the ports reconstruct the pipeline TOPOLOGY + contract
-  from `langgraph.json` + the actor CLAUDE.md, with the native (PDF→webp/OCR) and
+  from `langgraph.json` + the actor AGENTS.md, with the native (PDF→webp/OCR) and
   network (USPTO PatentsView / EPO OPS) boundaries left INJECTABLE (`*list-pending*`,
   `*convert-blob*`, `*write-record*`, `*http-get*`, `*write-records*`) — the actor
   swap pattern, defaulting to a "store not configured" / network-disabled no-op so
