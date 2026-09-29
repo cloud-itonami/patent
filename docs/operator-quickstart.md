@@ -218,7 +218,7 @@ npm test   # 4 passed に戻ることを確認する
 |---|---|
 | `lg/lg_patent/**.py`（配備されている Python サーバ） | `lg/langgraph.json` の `dependencies` が `../../../40-engine/kotoba/crates/kotoba-kotodama/py` を指しており、移行後のこの repo からは解決しない。`pyproject.toml` も `kotodama` を要求するが同じ場所に無い |
 | `appview/etzhayyim-wasm-patent-p4t3nt01/` | `kotodama.jsonld` **1 ファイルだけ**。`staticDir: /wasm/svelte/dist` と HTTP route を宣言するが、svelte も wasm もこの repo に無い |
-| `CLAUDE.md` の «PDS Shared Executor が 7 pipeline» / `vertex_patent` (migration 0037) | executor も migration もこの repo に無い（移行前の monorepo の記述） |
+| `AGENTS.md` の «PDS Shared Executor が 7 pipeline» / `vertex_patent` (migration 0037) | executor も migration もこの repo に無い（移行前の monorepo の記述） |
 | `kotodama.edn` の 11 本の BPMN プロセス | `.bpmn` の実体は `../../etzhayyim-root/00-contracts/` にあり、ここには無い |
 | worker の `serve` サブコマンド | Zeebe gateway（`AGENTGATEWAY_MCP_URL`）と RisingWave（`RW_URL`）が要る。手元では `dry-run` を使う |
 

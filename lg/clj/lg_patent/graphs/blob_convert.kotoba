@@ -6,7 +6,7 @@
   That kotodama module is NOT vendored into this checkout, so its internal node
   bodies cannot be byte-faithfully transcribed; this port reconstructs the
   pipeline's TOPOLOGY + contract from the langgraph.json cron (`{limit: 25}`,
-  every 5 min) + the actor CLAUDE.md (`vertex_patent` + blob conversion), with
+  every 5 min) + the actor AGENTS.md (`vertex_patent` + blob conversion), with
   the two side-effecting boundaries left INJECTABLE per the actor-swap pattern:
 
     *list-pending*  — store seam: pending-blob rows to convert. RisingWave/psycopg

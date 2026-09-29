@@ -19,9 +19,9 @@ JPO / USPTO / EPO / WIPO に問い合わせに行くことはしないし、あ�
 QA / 規制レビューであってこの repo ではない。期限が明示されていない場合、
 worker は `filed_at + 20 年` を**レビュー候補を出すためだけの目安**として使う。
 
-## `CLAUDE.md` より先にこれを読む — あれは設計文書であって状態報告ではない
+## `AGENTS.md` より先にこれを読む — あれは設計文書であって状態報告ではない
 
-`CLAUDE.md` は、この repo に入っているものよりかなり大きな系を記述している。
+`AGENTS.md` は、この repo に入っているものよりかなり大きな系を記述している。
 「T1 Logical Actor」「PDS Shared Executor が 7 本の pipeline を回す」
 「`vertex_patent` + `edge_patent_cites` + … (migration 0037)」と書かれているが、
 **その executor も migration も、この repo には無い。** 同じく `kotodama.edn` は
